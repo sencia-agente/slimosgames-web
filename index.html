@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slimos Games · Slimos, puzle de lógica</title>
+<meta name="description" content="Slimos: estira y encaja los slimos en un puzle de lógica adorable. Un juego de Slimos Games.">
+<meta property="og:title" content="Slimos · Puzle de lógica">
+<meta property="og:description" content="Estira y encaja los slimos. Más de 500 niveles, mural para completar y un reto nuevo cada día.">
+<meta property="og:image" content="https://slimosgames.com/img/shot_es_1.webp">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+@font-face{font-family:Fr;font-weight:700;src:url(Fredoka-700.ttf);font-display:swap}
+@font-face{font-family:Fr;font-weight:600;src:url(Fredoka-600.ttf);font-display:swap}
+@font-face{font-family:Fr;font-weight:500;src:url(Fredoka-500.ttf);font-display:swap}
+:root{--bg:#10122F;--bg2:#1A1D52;--ink:#fff;--soft:#C9CCF5;--mute:#8E92C9;--cy:#5FDDEA;--pk:#FF8FCB;--ye:#FFD95A;--pu:#B596FF;--gr:#74E6A6;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.55 Fr,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 10% 0%,rgba(60,186,240,.28),transparent 70%),radial-gradient(50% 40% at 100% 30%,rgba(176,140,255,.25),transparent 70%),radial-gradient(60% 40% at 30% 100%,rgba(255,143,203,.16),transparent 70%),linear-gradient(180deg,#1E2266,#10122F 60%)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 22px Fr}
+.brand img{width:42px;height:42px;border-radius:11px;box-shadow:0 0 0 1px var(--line)}
+.lang{display:flex;gap:4px;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+.lang button{border:0;background:none;color:var(--soft);font:600 14px Fr;padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang button.on{background:#fff;color:var(--bg)}
+.hero{position:relative;min-height:560px;display:flex;align-items:center;padding:30px 0}
+.hero>div:first-child{position:relative;z-index:2;max-width:520px}
+.hero-art{position:absolute;z-index:1;top:0;bottom:0;right:-40px;width:min(600px,50vw);
+ --mx:linear-gradient(90deg,transparent 0%,#000 24%,#000 80%,transparent 100%);--my:linear-gradient(180deg,transparent 0%,#000 18%,#000 88%,transparent 100%);-webkit-mask-image:var(--mx),var(--my);-webkit-mask-composite:source-in;mask-image:var(--mx),var(--my);mask-composite:intersect}
+.hero-art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.eyebrow{display:inline-block;font:600 14px Fr;letter-spacing:.08em;text-transform:uppercase;color:var(--cy);margin-bottom:12px}
+h1{font:700 clamp(54px,9vw,96px)/.95 Fr;margin:0 0 14px;letter-spacing:-.01em}
+.tag{font:700 clamp(24px,3.4vw,34px)/1.15 Fr;margin:0 0 14px}
+.tag em{font-style:normal;color:var(--cy)}
+.lead{color:var(--soft);max-width:520px;margin:0 0 26px}
+.badges{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.badges img{height:52px;display:block}
+.soon{font:600 14px Fr;color:var(--mute);margin-top:12px}
+.shots{display:flex;gap:18px;overflow-x:auto;padding:26px 0 34px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shots img{width:230px;flex:none;border-radius:26px;box-shadow:0 0 0 1px var(--line),0 24px 50px rgba(0,0,0,.4);scroll-snap-align:start}
+section{padding:46px 0;border-top:1px solid var(--line)}
+h2{font:700 clamp(30px,4.4vw,42px)/1.1 Fr;margin:0 0 14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.card{background:rgba(255,255,255,.06);border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1px var(--line)}
+.card b{display:block;font:700 20px Fr;margin-bottom:6px}
+.card p{margin:0;color:var(--soft);font-size:16px}
+.dot{width:14px;height:14px;border-radius:5px;display:inline-block;margin-right:8px;vertical-align:1px}
+.studio{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center}
+.studio img{width:100%;max-width:340px;display:block;margin:0 auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.4))}
+.mail{display:inline-block;margin-top:8px;background:#fff;color:var(--bg);text-decoration:none;font:700 18px Fr;padding:12px 22px;border-radius:999px}
+.faq{margin-top:20px}
+.faq details{background:rgba(255,255,255,.05);border-radius:16px;padding:14px 18px;margin-bottom:10px;box-shadow:inset 0 0 0 1px var(--line)}
+.faq summary{font:600 17px Fr;cursor:pointer}
+.faq p{color:var(--soft);margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute);font-size:15px;display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between}
+footer nav{display:flex;gap:20px}
+html:not(.en) [data-en],html.en [data-es]{display:none!important}
+@media (max-width:760px){
+ .hero{flex-direction:column;min-height:0;padding-top:0;text-align:center}.hero>div:first-child{max-width:none}.lead{margin-left:auto;margin-right:auto}.badges{justify-content:center}
+ .hero-art{position:relative;order:-1;right:auto;width:calc(100% + 40px);margin:0 -20px 6px;height:auto;aspect-ratio:1030/941;-webkit-mask:linear-gradient(0deg,transparent 0%,#000 7%);mask:linear-gradient(0deg,transparent 0%,#000 7%)}
+ .hero-art img{content:url(img/hero_m.webp);object-position:center}
+ .grid3{grid-template-columns:1fr}.studio{grid-template-columns:1fr;text-align:center}.studio img{max-width:240px}
+ .shots img{width:200px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <a class="brand" href="#"><img src="img/icon.png" alt="">Slimos Games</a>
+ <div class="lang"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+</header>
+
+<div class="hero">
+ <div>
+  <span class="eyebrow" data-es>Puzle de lógica</span><span class="eyebrow" data-en>Logic puzzle</span>
+  <h1>Slimos</h1>
+  <p class="tag" data-es>Estira y encaja <em>los slimos</em></p>
+  <p class="tag" data-en>Stretch and fit <em>the slimes</em></p>
+  <p class="lead" data-es>Cada slimo ocupa tantas casillas como su número. Encájalos todos en el tablero, consigue las 3 gotas y pinta tu mural pieza a pieza.</p>
+  <p class="lead" data-en>Each slime fills as many cells as its number. Fit them all on the board, earn all 3 drops and paint your mural piece by piece.</p>
+  <div class="badges">
+   <img data-es src="img/as_es.svg" alt="Descárgalo en el App Store"><img data-en src="img/as_en.svg" alt="Download on the App Store">
+   <img data-es src="img/gp_es.svg" alt="Disponible en Google Play"><img data-en src="img/gp_en.svg" alt="Get it on Google Play">
+  </div>
+  <div class="soon" data-es>Muy pronto en iPhone y Android</div><div class="soon" data-en>Coming soon to iPhone and Android</div>
+ </div>
+ <div class="hero-art"><img src="img/hero.webp" alt="Slimos"></div>
+</div>
+
+<div class="shots" data-es>
+ <img src="img/shot_es_1.webp" alt="Estira y encaja los slimos"><img src="img/shot_es_4.webp" alt="Slimos especiales"><img src="img/shot_es_6.webp" alt="Personaliza tus slimos"><img src="img/shot_es_7.webp" alt="Reto diario">
+</div>
+<div class="shots" data-en>
+ <img src="img/shot_en_1.webp" alt="Stretch and fit the slimes"><img src="img/shot_en_4.webp" alt="Special slimes"><img src="img/shot_en_6.webp" alt="Dress up your slimes"><img src="img/shot_en_7.webp" alt="Daily challenge">
+</div>
+
+<section>
+ <h2 data-es>Fácil de aprender, difícil de soltar</h2><h2 data-en>Easy to learn, hard to put down</h2>
+ <div class="grid3">
+  <div class="card"><b><span class="dot" style="background:var(--ye)"></span><span data-es>Más de 500 niveles</span><span data-en>500+ levels</span></b>
+   <p data-es>De tableros de 6x6 para empezar a retos de 9x11 para expertos.</p><p data-en>From 6x6 boards to start with up to 9x11 challenges for experts.</p></div>
+  <div class="card"><b><span class="dot" style="background:var(--pk)"></span><span data-es>Tu mural</span><span data-en>Your mural</span></b>
+   <p data-es>Cada nivel superado pinta una pieza de un mural que vas completando.</p><p data-en>Every level you beat paints a piece of a mural you complete over time.</p></div>
+  <div class="card"><b><span class="dot" style="background:var(--gr)"></span><span data-es>Reto diario</span><span data-en>Daily challenge</span></b>
+   <p data-es>El mismo nivel para todo el mundo cada día. ¿Mantendrás la racha?</p><p data-en>The same level for everyone, every day. Can you keep your streak?</p></div>
+ </div>
+</section>
+
+<section class="studio" id="estudio">
+ <img src="img/torre.webp" alt="">
+ <div>
+  <h2 data-es>Slimos Games</h2><h2 data-en>Slimos Games</h2>
+  <p class="lead" data-es>Somos un estudio independiente de España. Hacemos juegos de puzles y estrategia en el mundo de los slimos: unos personajes de gelatina, tiernos y muy expresivos. Slimos es el primero.</p>
+  <p class="lead" data-en>We're an independent studio from Spain. We make puzzle and strategy games set in the world of the slimes: soft, jelly characters with very expressive eyes. Slimos is the first one.</p>
+ </div>
+</section>
+
+<section id="soporte">
+ <h2 data-es>Soporte</h2><h2 data-en>Support</h2>
+ <p class="lead" data-es>¿Tienes un problema, una idea o un nivel que se te resiste? Escríbenos y te respondemos lo antes posible.</p>
+ <p class="lead" data-en>Got a problem, an idea or a level you can't beat? Write to us and we'll reply as soon as we can.</p>
+ <a class="mail" href="mailto:hola.slimosgames@gmail.com">hola.slimosgames@gmail.com</a>
+ <div class="faq">
+  <details><summary data-es>¿Cómo se juega?</summary><summary data-en>How do I play?</summary>
+   <p data-es>Arrastra cada slimo para estirarlo hasta que ocupe tantas casillas como su número. Gana el nivel cuando todos los slimos caben en el tablero sin solaparse.</p>
+   <p data-en>Drag each slime to stretch it until it fills as many cells as its number. You win when every slime fits on the board without overlapping.</p></details>
+ </div>
+</section>
+
+<footer>
+ <span>© 2026 Slimos Games</span>
+ <nav><a href="privacidad.html" data-es>Privacidad</a><a href="privacidad.html" data-en>Privacy</a><a href="#soporte" data-es>Soporte</a><a href="#soporte" data-en>Support</a></nav>
+</footer>
+</div>
+<script>
+(function(){
+ var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+ var l=saved||((navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en');
+ function set(x){l=x;document.documentElement.classList.toggle('en',x==='en');document.documentElement.lang=x;
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===x)});
+  document.title=x==='en'?'Slimos Games · Slimos, logic puzzle':'Slimos Games · Slimos, puzle de lógica'}
+ document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){set(b.dataset.l);try{localStorage.setItem('lang',b.dataset.l)}catch(e){}}});
+ set(l);
+})();
+</script>
+</body>
+</html>
