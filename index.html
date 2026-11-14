@@ -38,7 +38,7 @@ h1{font:700 clamp(54px,9vw,96px)/.95 Fr;margin:0 0 14px;letter-spacing:-.01em}
 .tag em{font-style:normal;color:var(--cy)}
 .lead{color:var(--soft);max-width:520px;margin:0 0 26px}
 .badges{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.badges img{height:52px;display:block}
+.badges img{height:52px;display:block}.badges a{display:block;transition:transform .15s}.badges a:hover{transform:translateY(-2px)}.badges img.off{opacity:.45;filter:grayscale(1)}
 .soon{font:600 14px Fr;color:var(--mute);margin-top:12px}
 .shots{display:flex;gap:18px;overflow-x:auto;padding:26px 0 34px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .shots img{width:230px;flex:none;border-radius:26px;box-shadow:0 0 0 1px var(--line),0 24px 50px rgba(0,0,0,.4);scroll-snap-align:start}
@@ -84,10 +84,10 @@ html:not(.en) [data-en],html.en [data-es]{display:none!important}
   <p class="lead" data-es>Cada slimo ocupa tantas casillas como su número. Encájalos todos en el tablero, consigue las 3 gotas y pinta tu mural pieza a pieza.</p>
   <p class="lead" data-en>Each slime fills as many cells as its number. Fit them all on the board, earn all 3 drops and paint your mural piece by piece.</p>
   <div class="badges">
-   <img data-es src="img/as_es.svg" alt="Descárgalo en el App Store"><img data-en src="img/as_en.svg" alt="Download on the App Store">
-   <img data-es src="img/gp_es.svg" alt="Disponible en Google Play"><img data-en src="img/gp_en.svg" alt="Get it on Google Play">
+   <a data-es href="https://apps.apple.com/es/app/slimos-logic-puzzle/id6829811642"><img src="img/as_es.svg" alt="Descárgalo en el App Store"></a><a data-en href="https://apps.apple.com/app/slimos-logic-puzzle/id6829811642"><img src="img/as_en.svg" alt="Download on the App Store"></a>
+   <img class="off" data-es src="img/gp_es.svg" alt="Disponible en Google Play"><img class="off" data-en src="img/gp_en.svg" alt="Get it on Google Play">
   </div>
-  <div class="soon" data-es>Muy pronto en iPhone y Android</div><div class="soon" data-en>Coming soon to iPhone and Android</div>
+  <div class="soon" data-es>Ya en iPhone · Muy pronto en Android</div><div class="soon" data-en>Out now on iPhone · Coming soon to Android</div>
  </div>
  <div class="hero-art"><img src="img/hero.webp" alt="Slimos"></div>
 </div>
