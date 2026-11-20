@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Te han retado en Slimos</title>
+<meta name="description" content="¿Superas el reto de hoy? Slimos, gratis en App Store y Google Play.">
+<meta property="og:title" content="Te han retado en Slimos"><meta property="og:description" content="¿Superas el reto de hoy? Gratis en App Store y Google Play">
+<meta property="og:image" content="https://slimosgames.com/img/apple-touch-icon.png"><meta name="theme-color" content="#10122F">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png"><link rel="icon" href="img/favicon.png">
+<style>
+@font-face{font-family:Fr;font-weight:700;src:url(Fredoka-700.ttf);font-display:swap}
+@font-face{font-family:Fr;font-weight:600;src:url(Fredoka-600.ttf);font-display:swap}
+@font-face{font-family:Fr;font-weight:500;src:url(Fredoka-500.ttf);font-display:swap}
+:root{--bg:#10122F;--card:#232663;--card2:#2C2F78;--ink:#fff;--soft:#C9CCF5;--mute:#8E92C9;--ye:#FFD95A;--pk:#FF8FCB;--cy:#5FDDEA;--gr:#74E6A6;--pu:#B596FF;--or:#FFA94D}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Fr,system-ui,sans-serif}
+body{min-height:100vh;overflow-x:hidden;
+ background:radial-gradient(120% 60% at 50% 0%,#3A2D8F 0%,rgba(58,45,143,0) 60%),radial-gradient(80% 50% at 50% 100%,#2A1F6B 0%,rgba(42,31,107,0) 70%),var(--bg)}
+.bgpat{position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect x='6' y='6' width='22' height='22' rx='7' fill='none' stroke='white' stroke-width='2.5'/%3E%3Crect x='36' y='36' width='22' height='22' rx='7' fill='none' stroke='white' stroke-width='2.5'/%3E%3C/svg%3E");transform:rotate(-8deg) scale(1.3)}
+.wrap{position:relative;max-width:440px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px 40px;display:flex;flex-direction:column;align-items:center}
+header{display:flex;align-items:center;gap:9px;align-self:stretch;justify-content:center;font-weight:700;font-size:19px;opacity:.92}
+header img{width:30px;height:30px;border-radius:8px}
+.pill{margin-top:26px;display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:999px;background:linear-gradient(90deg,#FF7A3D,#FFB13D);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 0 #B3521E;animation:pop .6s cubic-bezier(.34,1.6,.6,1) both}
+.pill svg{width:17px;height:17px}
+h1{margin:16px 0 0;font-size:40px;line-height:1.02;text-align:center;font-weight:700;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--ye)}
+.sub{margin:8px 0 0;color:var(--soft);font-weight:500;font-size:16px;text-align:center}
+/* versus card with slimes peeking over it */
+.stage{position:relative;align-self:stretch;margin-top:64px}
+.peek{position:absolute;top:-46px;z-index:0;left:0;right:0;height:60px;display:flex;justify-content:center;gap:16px;pointer-events:none}
+.peek svg{width:62px;height:62px;animation:bob 2.6s ease-in-out infinite}
+.peek svg:nth-child(2){width:74px;height:74px;margin-top:-10px;animation-delay:.4s}
+.peek svg:nth-child(3){animation-delay:.8s}
+.vs{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:0;background:var(--card);border-radius:26px;padding:20px 12px 18px;box-shadow:0 10px 0 #171A4A,0 24px 50px rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.08)}
+.side{display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 6px}
+.who{font-weight:600;font-size:14px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+.time{font-weight:700;font-size:46px;line-height:1}
+.time.q{color:var(--pu);border:2.5px dashed rgba(181,150,255,.6);border-radius:18px;padding:4px 18px;font-size:40px;animation:pulse 1.6s ease-in-out infinite}
+.sq{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;max-width:150px}
+.sq i{width:15px;height:15px;border-radius:4.5px;display:block;box-shadow:inset 0 -2.5px 0 rgba(0,0,0,.2)}
+.meta{display:flex;gap:10px;font-weight:600;font-size:14px;color:var(--soft)}
+.meta span{display:inline-flex;align-items:center;gap:4px}.meta svg{width:15px;height:15px}
+.tbd{font-weight:500;font-size:14px;color:var(--mute);text-align:center;max-width:120px;line-height:1.25}
+.mid{display:flex;align-items:center;justify-content:center;position:relative}
+.mid:before{content:"";position:absolute;top:6px;bottom:6px;left:50%;border-left:2px dashed rgba(255,255,255,.12)}
+.mid b{position:relative;width:46px;height:46px;border-radius:50%;background:var(--ye);color:#3A2A00;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 0 #B8921E}
+.info{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;color:var(--soft);font-weight:500;font-size:15px}
+.info .cd{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);padding:6px 12px;border-radius:999px;color:#fff;font-weight:600}
+.info .cd svg{width:16px;height:16px;color:var(--or)}
+.cta{margin-top:26px;align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:12px}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.badges a{display:block;transition:transform .15s}.badges a:active{transform:scale(.96)}
+.badges img{height:52px;display:block}
+.free{color:var(--mute);font-weight:500;font-size:14px}
+.steps{margin-top:30px;align-self:stretch;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.step{background:rgba(255,255,255,.05);border-radius:18px;padding:14px 8px;text-align:center;font-weight:500;font-size:13.5px;color:var(--soft);line-height:1.25}
+.step b{display:flex;margin:0 auto 8px;width:30px;height:30px;border-radius:50%;align-items:center;justify-content:center;font-size:15px;color:#2A1F4D}
+footer{margin-top:34px;color:var(--mute);font-size:13px;font-weight:500}footer a{color:var(--mute)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+</style></head>
+<body><div class="bgpat"></div>
+<div class="wrap">
+ <header><img src="img/icon.png" alt="">Slimos</header>
+ <div class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.457 3L21 3.003l.002 3.523-5.467 5.466 2.828 2.829 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415-2.829-2.828-2.828 2.828 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 2.827-2.828-5.46-5.46L3 3l3.546.003 5.453 5.454L17.457 3zm-7.58 10.406L7.05 16.234l.708.707 2.827-2.828-.707-.707zm9.124-8.405h-.717l-4.87 4.869.706.707 4.881-4.879V5zM5 5v.716l.706.707.708-.709L5.705 5H5z"/></svg><span id="tPill">Te han retado</span></div>
+ <h1 id="tH1">¿Le ganas a <em>tu amigo</em>?</h1>
+ <p class="sub" id="tSub">El mismo puzle para todo el mundo, hoy.</p>
+
+ <div class="stage">
+  <div class="peek" aria-hidden="true"></div>
+  <div class="vs">
+   <div class="side">
+    <div class="who" id="tFriend">Tu amigo</div>
+    <div class="time" id="time">0:47</div>
+    <div class="sq" id="sq"></div>
+    <div class="meta"><span id="streak"></span></div>
+   </div>
+   <div class="mid"><b>VS</b></div>
+   <div class="side">
+    <div class="who" id="tYou">Tú</div>
+    <div class="time q">¿?</div>
+    <div class="tbd" id="tTbd">Descárgalo y supera su tiempo</div>
+   </div>
+  </div>
+ </div>
+
+ <div class="info"><span id="day">Reto #20</span><span class="cd"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.618 5.968l1.453-1.453 1.414 1.414-1.453 1.453a9 9 0 1 1-1.414-1.414zM12 20a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM11 8h2v6h-2V8zM8 1h8v2H8V1z"/></svg><span id="cd">--:--:--</span></span></div>
+
+ <div class="cta">
+  <div class="badges">
+   <a id="as" href="https://apps.apple.com/es/app/slimos-logic-puzzle/id6829811642"><img id="asI" src="img/as_es.svg" alt="App Store"></a>
+   <a id="gp" href="https://play.google.com/store/apps/details?id=com.slimosgames.slimos"><img id="gpI" src="img/gp_es.svg" alt="Google Play"></a>
+  </div>
+  <div class="free" id="tFree">Gratis · Sin registro</div>
+ </div>
+
+ <div class="steps">
+  <div class="step"><b style="background:var(--cy)">1</b><span id="s1">Descarga Slimos</span></div>
+  <div class="step"><b style="background:var(--pk)">2</b><span id="s2">Toca «Reto diario»</span></div>
+  <div class="step"><b style="background:var(--ye)">3</b><span id="s3">Bate su tiempo</span></div>
+ </div>
+ <footer>© 2026 Slimos Games · <a href="./">slimosgames.com</a></footer>
+</div>
+<script>
+(function(){
+ // link from the game: reto.html?d=20&t=47&s=7&q=ggyggyg&l=es  (d = challenge number, t = seconds, s = streak, q = g/y per slime)
+ var P=new URLSearchParams(location.search),lang=(P.get("l")||navigator.language||"es").slice(0,2)==="es"?"es":"en";
+ var d=+P.get("d")||0,t=+P.get("t"),s=+P.get("s")||0,q=(P.get("q")||"").replace(/[^gy]/g,"").slice(0,24);
+ var T={es:{pill:"Te han retado",h1:"¿Le ganas a <em>tu amigo</em>?",sub:"El mismo puzle para todo el mundo, hoy.",friend:"Tu amigo",you:"Tú",tbd:"Descárgalo y supera su tiempo",day:"Reto #",ends:"Acaba en ",free:"Gratis · Sin registro",s1:"Descarga Slimos",s2:"Toca «Reto diario»",s3:"Bate su tiempo",days:"días"},
+        en:{pill:"You've been challenged",h1:"Can you beat <em>your friend</em>?",sub:"Same puzzle for everyone, today.",friend:"Your friend",you:"You",tbd:"Get it and beat their time",day:"Challenge #",ends:"Ends in ",free:"Free · No sign-up",s1:"Get Slimos",s2:"Tap “Daily challenge”",s3:"Beat their time",days:"days"}}[lang];
+ var $=function(i){return document.getElementById(i)};
+ document.documentElement.lang=lang;
+ $("tPill").textContent=T.pill;$("tH1").innerHTML=T.h1;$("tSub").textContent=T.sub;$("tFriend").textContent=T.friend;$("tYou").textContent=T.you;$("tTbd").textContent=T.tbd;$("tFree").textContent=T.free;$("s1").textContent=T.s1;$("s2").textContent=T.s2;$("s3").textContent=T.s3;
+ if(lang==="en"){$("as").href="https://apps.apple.com/app/slimos-logic-puzzle/id6829811642";$("asI").src="img/as_en.svg";$("gpI").src="img/gp_en.svg"}
+ // today's number when the link has none
+ if(!d){var e=new Date(2026,10,1),n=new Date();d=Math.max(1,Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-e)/864e5)+1)}
+ $("day").textContent=T.day+d;
+ if(t>0){$("time").textContent=Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}else{$("time").textContent="✓"}
+ var C={g:"#74E6A6",y:"#FFD95A"};$("sq").innerHTML=q.split("").map(function(c){return'<i style="background:'+C[c]+'"></i>'}).join("");
+ if(s>1)$("streak").innerHTML='<svg viewBox="0 0 24 24" fill="#FF9A3C"><path d="M12 23a7.5 7.5 0 0 1-5.138-12.963C8.204 8.774 11.5 6.5 11 1.5c6 4 9 8 3 14 1 0 2.5 0 5-2.47.27.773.5 1.604.5 2.47A7.5 7.5 0 0 1 12 23z"/></svg>'+s+" "+T.days;
+ // countdown to midnight: the challenge changes every day
+ function tick(){var n=new Date(),m=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1),x=Math.max(0,Math.floor((m-n)/1e3));
+  $("cd").textContent=T.ends+String(Math.floor(x/3600)).padStart(2,"0")+":"+String(Math.floor(x%3600/60)).padStart(2,"0")+":"+String(x%60).padStart(2,"0")}
+ tick();setInterval(tick,1000);
+ // three slimes peeking over the card
+ function slime(c,dk,eyes){return'<svg viewBox="0 0 100 100"><rect x="8" y="14" width="84" height="86" rx="26" fill="'+dk+'"/><rect x="8" y="8" width="84" height="84" rx="26" fill="'+c+'"/><rect x="18" y="16" width="22" height="12" rx="6" fill="#fff" opacity=".35"/>'+eyes+'</svg>'}
+ var happy='<path d="M33 52q6-8 12 0M55 52q6-8 12 0" stroke="#2A1F4D" stroke-width="5" fill="none" stroke-linecap="round"/>',
+     round='<ellipse cx="38" cy="50" rx="6" ry="9" fill="#2A1F4D"/><ellipse cx="62" cy="50" rx="6" ry="9" fill="#2A1F4D"/><circle cx="40" cy="46" r="2.5" fill="#fff"/><circle cx="64" cy="46" r="2.5" fill="#fff"/>',
+     sly='<path d="M32 50h13M55 50h13" stroke="#2A1F4D" stroke-width="5" stroke-linecap="round"/><path d="M44 64q6 5 12 0" stroke="#2A1F4D" stroke-width="4" fill="none" stroke-linecap="round"/>';
+ document.querySelector(".peek").innerHTML=slime("#FF8FCB","#D45F9E",happy)+slime("#FFD95A","#D1A92A",round)+slime("#5FDDEA","#2FA9B6",sly);
+})();
+</script>
+</body></html>
