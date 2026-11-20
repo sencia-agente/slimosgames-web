@@ -48,7 +48,7 @@ h1 em{font-style:normal;color:var(--ye)}
 .badges img{height:50px;display:block}
 .free{margin-top:10px;color:var(--muted);font-weight:600;font-size:14px}
 .steps{margin-top:24px;align-self:stretch;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.step{background:rgba(38,43,99,.9);border:1.5px solid rgba(255,255,255,.06);border-radius:18px;padding:12px 6px;text-align:center;font-weight:800;font-size:13px;color:var(--ink);line-height:1.25}
+.step{white-space:nowrap;background:rgba(38,43,99,.9);border:1.5px solid rgba(255,255,255,.06);border-radius:18px;padding:12px 6px;text-align:center;font-weight:800;font-size:13px;color:var(--ink);line-height:1.25}
 .step img{display:block;width:40px;height:40px;margin:0 auto 9px}
 footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer a{color:var(--muted)}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
@@ -86,9 +86,9 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer 
  <div class="free" id="tFree">Gratis · Sin registro</div>
 
  <div class="steps">
-  <div class="step"><img src="img/reto/n1.webp" alt="1"><span id="s1">Descarga Slimos</span></div>
-  <div class="step"><img src="img/reto/n2.webp" alt="2"><span id="s2">Toca «Reto diario»</span></div>
-  <div class="step"><img src="img/reto/n3.webp" alt="3"><span id="s3">Bate su tiempo</span></div>
+  <div class="step"><img src="img/reto/n1.webp" alt="1"><span id="s1">Descarga<br>Slimos</span></div>
+  <div class="step"><img src="img/reto/n2.webp" alt="2"><span id="s2">Toca «Reto<br>diario»</span></div>
+  <div class="step"><img src="img/reto/n3.webp" alt="3"><span id="s3">Bate<br>su récord</span></div>
  </div>
  <footer>© 2026 Slimos Games · <a href="./">slimosgames.com</a></footer>
 </div>
@@ -97,11 +97,11 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer 
  // link from the game: reto.html?d=20&t=47&s=7&q=ggyggyg&l=es  (d = challenge number, t = seconds, s = streak, q = g/y per slime)
  var P=new URLSearchParams(location.search),lang=(P.get("l")||navigator.language||"es").slice(0,2)==="es"?"es":"en";
  var d=+P.get("d")||0,t=+P.get("t"),s=+P.get("s")||0,q=(P.get("q")||"").replace(/[^gy]/g,"").slice(0,24);
- var T={es:{pill:"Te han retado",h1:"¿Podrás <em>ganarle</em>?",sub:"El mismo puzle para todo el mundo, hoy.",friend:"Tu amigo",you:"Tú",tbd:"Descárgalo y supera su tiempo",day:"Reto #",ends:"Acaba en ",free:"Gratis · Sin registro",s1:"Descarga Slimos",s2:"Toca «Reto diario»",s3:"Bate su tiempo",days:"días seguidos"},
-        en:{pill:"You've been challenged",h1:"Can you <em>beat them</em>?",sub:"Same puzzle for everyone, today.",friend:"Your friend",you:"You",tbd:"Get it and beat their time",day:"Challenge #",ends:"Ends in ",free:"Free · No sign-up",s1:"Get Slimos",s2:"Tap “Daily challenge”",s3:"Beat their time",days:"day streak"}}[lang];
+ var T={es:{pill:"Te han retado",h1:"¿Podrás <em>ganarle</em>?",sub:"El mismo puzle para todo el mundo, hoy.",friend:"Tu amigo",you:"Tú",tbd:"Descárgalo y supera su tiempo",day:"Reto #",ends:"Acaba en ",free:"Gratis · Sin registro",s1:"Descarga<br>Slimos",s2:"Toca «Reto<br>diario»",s3:"Bate<br>su récord",days:"días seguidos"},
+        en:{pill:"You've been challenged",h1:"Can you <em>beat them</em>?",sub:"Same puzzle for everyone, today.",friend:"Your friend",you:"You",tbd:"Get it and beat their time",day:"Challenge #",ends:"Ends in ",free:"Free · No sign-up",s1:"Get<br>Slimos",s2:"Tap “Daily<br>challenge”",s3:"Beat<br>their record",days:"day streak"}}[lang];
  var $=function(i){return document.getElementById(i)};
  document.documentElement.lang=lang;
- $("tPill").textContent=T.pill;$("tH1").innerHTML=T.h1;$("tSub").textContent=T.sub;$("tFriend").textContent=T.friend;$("tYou").textContent=T.you;$("tTbd").textContent=T.tbd;$("tFree").textContent=T.free;$("s1").textContent=T.s1;$("s2").textContent=T.s2;$("s3").textContent=T.s3;
+ $("tPill").textContent=T.pill;$("tH1").innerHTML=T.h1;$("tSub").textContent=T.sub;$("tFriend").textContent=T.friend;$("tYou").textContent=T.you;$("tTbd").textContent=T.tbd;$("tFree").textContent=T.free;$("s1").innerHTML=T.s1;$("s2").innerHTML=T.s2;$("s3").innerHTML=T.s3;
  if(lang==="en"){$("as").href="https://apps.apple.com/app/slimos-logic-puzzle/id6829811642";$("asI").src="img/as_en.svg";$("gpI").src="img/gp_en.svg"}
  // today's number when the link has none
  if(!d){var e=new Date(2026,10,1),n=new Date();d=Math.max(1,Math.round((new Date(n.getFullYear(),n.getMonth(),n.getDate())-e)/864e5)+1)}
