@@ -20,13 +20,7 @@ body{min-height:100vh;overflow-x:hidden;position:relative;background:url(img/mur
 body:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 60% at 50% 38%,rgba(5,3,26,0) 45%,rgba(5,3,26,.5) 100%),linear-gradient(180deg,rgba(16,13,48,0) 60%,rgba(16,13,48,.9) 100%)}
 .wrap{position:relative;max-width:440px;margin:0 auto;padding:max(26px,env(safe-area-inset-top)) 18px 40px;display:flex;flex-direction:column;align-items:center}
 .logo{font-family:Fr;font-weight:700;font-size:58px;line-height:1;text-shadow:0 6px 22px rgba(5,3,26,.7)}
-.gang{position:relative;width:300px;height:118px;margin-top:20px}
-.gang img{position:absolute;filter:drop-shadow(0 8px 10px rgba(5,3,26,.45))}
-.gang .a{left:0;bottom:0;width:58px;animation:bob 3s ease-in-out infinite}
-.gang .b{left:66px;bottom:0;width:168px}
-.gang .c{left:121px;bottom:47px;width:58px;animation:bob 3s ease-in-out .5s infinite}
-.gang .d{left:242px;bottom:0;width:58px;animation:bob 3s ease-in-out 1s infinite}
-.pill{margin-top:22px;display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:14px;background:var(--btn);color:var(--btn-ink);font-family:Fr;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 0 var(--btn-sh)}
+.pill{margin-top:26px;display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:14px;background:var(--btn);color:var(--btn-ink);font-family:Fr;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 0 var(--btn-sh)}
 .pill svg{width:17px;height:17px}
 h1{margin:14px 0 0;font-family:Fr;font-size:36px;line-height:1.05;text-align:center;font-weight:700;text-shadow:0 4px 16px rgba(5,3,26,.6)}
 h1 em{font-style:normal;color:var(--ye)}
@@ -55,7 +49,7 @@ h1 em{font-style:normal;color:var(--ye)}
 .free{margin-top:10px;color:var(--muted);font-weight:600;font-size:14px}
 .steps{margin-top:24px;align-self:stretch;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .step{background:rgba(38,43,99,.9);border:1.5px solid rgba(255,255,255,.06);border-radius:18px;padding:12px 6px;text-align:center;font-weight:800;font-size:13px;color:var(--ink);line-height:1.25}
-.step img{display:block;width:34px;height:34px;margin:0 auto 7px}
+.step b{display:flex;width:34px;height:34px;margin:0 auto 9px;border-radius:50%;align-items:center;justify-content:center;background:var(--btn);color:var(--btn-ink);font-family:Fr;font-weight:700;font-size:17px;box-shadow:0 3px 0 var(--btn-sh)}
 footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer a{color:var(--muted)}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
@@ -63,9 +57,8 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer 
 <body>
 <div class="wrap">
  <div class="logo">Slimos</div>
- <div class="gang" aria-hidden="true"><img class="a" src="img/reto/s5.webp" alt=""><img class="b" src="img/reto/l3.webp" alt=""><img class="c" src="img/reto/s4.webp" alt=""><img class="d" src="img/reto/s9.webp" alt=""></div>
  <div class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.457 3L21 3.003l.002 3.523-5.467 5.466 2.828 2.829 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415-2.829-2.828-2.828 2.828 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 2.827-2.828-5.46-5.46L3 3l3.546.003 5.453 5.454L17.457 3zm-7.58 10.406L7.05 16.234l.708.707 2.827-2.828-.707-.707zm9.124-8.405h-.717l-4.87 4.869.706.707 4.881-4.879V5zM5 5v.716l.706.707.708-.709L5.705 5H5z"/></svg><span id="tPill">Te han retado</span></div>
- <h1 id="tH1">¿Le ganas a <em>tu amigo</em>?</h1>
+ <h1 id="tH1">¿Podrás <em>ganarle</em>?</h1>
  <p class="sub" id="tSub">El mismo puzle para todo el mundo, hoy.</p>
 
  <div class="vs">
@@ -93,9 +86,9 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer 
  <div class="free" id="tFree">Gratis · Sin registro</div>
 
  <div class="steps">
-  <div class="step"><img src="img/reto/s5.webp" alt=""><span id="s1">Descarga Slimos</span></div>
-  <div class="step"><img src="img/reto/s4.webp" alt=""><span id="s2">Toca «Reto diario»</span></div>
-  <div class="step"><img src="img/reto/s9.webp" alt=""><span id="s3">Bate su tiempo</span></div>
+  <div class="step"><b>1</b><span id="s1">Descarga Slimos</span></div>
+  <div class="step"><b>2</b><span id="s2">Toca «Reto diario»</span></div>
+  <div class="step"><b>3</b><span id="s3">Bate su tiempo</span></div>
  </div>
  <footer>© 2026 Slimos Games · <a href="./">slimosgames.com</a></footer>
 </div>
@@ -104,8 +97,8 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;font-weight:600}footer 
  // link from the game: reto.html?d=20&t=47&s=7&q=ggyggyg&l=es  (d = challenge number, t = seconds, s = streak, q = g/y per slime)
  var P=new URLSearchParams(location.search),lang=(P.get("l")||navigator.language||"es").slice(0,2)==="es"?"es":"en";
  var d=+P.get("d")||0,t=+P.get("t"),s=+P.get("s")||0,q=(P.get("q")||"").replace(/[^gy]/g,"").slice(0,24);
- var T={es:{pill:"Te han retado",h1:"¿Le ganas a <em>tu amigo</em>?",sub:"El mismo puzle para todo el mundo, hoy.",friend:"Tu amigo",you:"Tú",tbd:"Descárgalo y supera su tiempo",day:"Reto #",ends:"Acaba en ",free:"Gratis · Sin registro",s1:"Descarga Slimos",s2:"Toca «Reto diario»",s3:"Bate su tiempo",days:"días seguidos"},
-        en:{pill:"You've been challenged",h1:"Can you beat <em>your friend</em>?",sub:"Same puzzle for everyone, today.",friend:"Your friend",you:"You",tbd:"Get it and beat their time",day:"Challenge #",ends:"Ends in ",free:"Free · No sign-up",s1:"Get Slimos",s2:"Tap “Daily challenge”",s3:"Beat their time",days:"day streak"}}[lang];
+ var T={es:{pill:"Te han retado",h1:"¿Podrás <em>ganarle</em>?",sub:"El mismo puzle para todo el mundo, hoy.",friend:"Tu amigo",you:"Tú",tbd:"Descárgalo y supera su tiempo",day:"Reto #",ends:"Acaba en ",free:"Gratis · Sin registro",s1:"Descarga Slimos",s2:"Toca «Reto diario»",s3:"Bate su tiempo",days:"días seguidos"},
+        en:{pill:"You've been challenged",h1:"Can you <em>beat them</em>?",sub:"Same puzzle for everyone, today.",friend:"Your friend",you:"You",tbd:"Get it and beat their time",day:"Challenge #",ends:"Ends in ",free:"Free · No sign-up",s1:"Get Slimos",s2:"Tap “Daily challenge”",s3:"Beat their time",days:"day streak"}}[lang];
  var $=function(i){return document.getElementById(i)};
  document.documentElement.lang=lang;
  $("tPill").textContent=T.pill;$("tH1").innerHTML=T.h1;$("tSub").textContent=T.sub;$("tFriend").textContent=T.friend;$("tYou").textContent=T.you;$("tTbd").textContent=T.tbd;$("tFree").textContent=T.free;$("s1").textContent=T.s1;$("s2").textContent=T.s2;$("s3").textContent=T.s3;
