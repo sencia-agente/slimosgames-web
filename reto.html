@@ -36,6 +36,20 @@ h1{margin-top:14px;font-weight:600;font-size:clamp(30px,9.4vw,40px);line-height:
 .note{margin-top:10px;font-size:14px;color:#A99BD8}
 footer{margin-top:30px;text-align:center;color:#A99BD8;font-size:14px}footer a{color:inherit}
 html:not(.en) [data-en],html.en [data-es]{display:none!important}
+
+/* proposal: sizes closer to the game */
+body{min-height:100vh;display:flex;flex-direction:column}.inv{flex:1}
+.tag{font-size:12px;padding:6px 12px}.tag svg{width:14px;height:14px}
+h1{font-size:28px;margin-top:12px}
+.sub{font-size:15px;margin-top:6px}
+.sc{padding:20px 14px 22px}.sc h2{font-size:18px}.sc .dt{font-size:13px}
+.sc .dr{gap:14px;margin:14px 0 12px}.sc .dr svg{width:20px;height:27px}
+.st strong{font-size:22px}.st span{font-size:10.5px}
+.sc .ch{gap:6px;margin-top:16px}.sc .ch i{width:18px;height:18px;border-radius:6px}
+.steps{gap:6px}.step{font-size:12.5px;padding:12px 4px;border-radius:20px}.step b{width:28px;height:28px;font-size:14px;margin-bottom:7px}
+.yt{font-size:28px}.ys{font-size:14px}
+.stores img{height:40px}.note{font-size:12px}
+footer{font-size:12px}
 </style></head>
 <body>
 <main class="wrap">
@@ -79,7 +93,7 @@ html:not(.en) [data-en],html.en [data-es]{display:none!important}
  var day=new Date(2026,10,d),M={es:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}[lang];
  $("dt").textContent=(lang==="en"?"Challenge #":"Reto #")+d+" · "+(lang==="en"?M[day.getMonth()]+" "+day.getDate():day.getDate()+" "+M[day.getMonth()]);
  $("time").textContent=t>0?Math.floor(t/60)+":"+String(t%60).padStart(2,"0"):"✓";
- if(h===null)$("hBox").style.display="none";else $("hints").textContent=+h||0;
+ $("hints").textContent=h===null?"–":(+h||0);
  $("streak").textContent=s;
  // the day's three drops, in the colours of its slimes (as in the game)
  var COL={1:"#4C58B8",2:"#FF6B6B",3:"#FFB238",4:"#FFE66D",5:"#6EE7A0",6:"#4DD9E8",7:"#5AA9FF",8:"#B08CFF",9:"#FF85C8",W:"#DCD5F7"},ks=c.length===3?c.split(""):["2","3","4"];
